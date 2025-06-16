@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  background: var(--color-bg);
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--color-text);
+  transition: background var(--transition), color var(--transition);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  background: var(--color-bg-alt);
+  color: var(--color-accent);
+  border-radius: 0.3em;
+  padding: 0.2em 0.4em;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-bg-alt);
+  border-radius: 4px;
+}
