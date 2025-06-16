@@ -1,10 +1,14 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 
-const mongoURL = 'mongodb+srv://priynka0004:P.chauhan1706@cluster0.v3np56g.mongodb.net/GoFoodMERN?retryWrites=true&w=majority&appName=Cluster0';
+const mongoURI = process.env.MONGO_URI;
 
 const connectToMongo = async () => {
     try {
-        await mongoose.connect(mongoURL);
+        await mongoose.connect(mongoURI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
         console.log("Connected to MongoDB");
 
         const fetched_data = await mongoose.connection.db.collection("food_items").find({}).toArray();
@@ -17,8 +21,8 @@ const connectToMongo = async () => {
 
     } catch (error) {
         console.error("Error connecting to MongoDB:", error);
+        throw error; // Optional: rethrow so your app can fail gracefully
     }
 };
-
 
 module.exports = connectToMongo;
